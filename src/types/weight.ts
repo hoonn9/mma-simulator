@@ -1,5 +1,7 @@
+type WeightClassName = 'fly' | 'bantom' | 'light' | 'welter' | 'middle' | 'heavy';
+
 export type Weight = {
-  name: string;
+  name: WeightClassName;
   limit: WeightLimit;
 };
 

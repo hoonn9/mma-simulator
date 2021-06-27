@@ -5,9 +5,14 @@ export type PlayerStyle = {
 
 export type PlayerGrade = {
   ranking: number;
+  pov: number;
+  total: {
+    win: number;
+    lose: number;
+  };
 };
 
-export type PlayerStat = {
+export type PlayerStats = {
   attack: number;
   defense: number;
   hp: number;

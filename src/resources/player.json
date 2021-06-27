@@ -1,0 +1,92 @@
+{
+  "players": [
+    {
+      "name": "lee",
+      "height": 172,
+      "weight": 65,
+      "style": {
+        "baseFight": "boxing",
+        "etc": ["kickBoxing"]
+      },
+      "stats": {
+        "attack": 50,
+        "defense": 100,
+        "hp": 100
+      },
+      "grade": {
+        "ranking": 0,
+        "pov": 90,
+        "total": {
+          "win": 9,
+          "lose": 1
+        }
+      }
+    },
+    {
+      "name": "zaeChun",
+      "height": 182,
+      "weight": 65,
+      "style": {
+        "baseFight": "jiujitsu",
+        "etc": []
+      },
+      "stats": {
+        "attack": 40,
+        "defense": 90,
+        "hp": 100
+      },
+      "grade": {
+        "ranking": 0,
+        "pov": 60,
+        "total": {
+          "win": 6,
+          "lose": 4
+        }
+      }
+    },
+    {
+      "name": "lungSoo",
+      "height": 178,
+      "weight": 63,
+      "style": {
+        "baseFight": "boxing",
+        "etc": []
+      },
+      "stats": {
+        "attack": 90,
+        "defense": 40,
+        "hp": 100
+      },
+      "grade": {
+        "ranking": 0,
+        "pov": 70,
+        "total": {
+          "win": 7,
+          "lose": 3
+        }
+      }
+    },
+    {
+      "name": "kozel",
+      "height": 190,
+      "weight": 63,
+      "style": {
+        "baseFight": "muayThai",
+        "etc": []
+      },
+      "stats": {
+        "attack": 50,
+        "defense": 50,
+        "hp": 100
+      },
+      "grade": {
+        "ranking": 0,
+        "pov": 80,
+        "total": {
+          "win": 8,
+          "lose": 2
+        }
+      }
+    }
+  ]
+}
