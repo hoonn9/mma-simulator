@@ -1,6 +1,7 @@
 {
   "players": [
     {
+      "id": 0,
       "name": "lee",
       "height": 172,
       "weight": 65,
@@ -11,7 +12,7 @@
       "stats": {
         "attack": 50,
         "defense": 100,
-        "hp": 100
+        "hp": 1000
       },
       "grade": {
         "ranking": 0,
@@ -23,6 +24,7 @@
       }
     },
     {
+      "id": 1,
       "name": "zaeChun",
       "height": 182,
       "weight": 65,
@@ -33,7 +35,7 @@
       "stats": {
         "attack": 40,
         "defense": 90,
-        "hp": 100
+        "hp": 1000
       },
       "grade": {
         "ranking": 0,
@@ -45,6 +47,7 @@
       }
     },
     {
+      "id": 2,
       "name": "lungSoo",
       "height": 178,
       "weight": 63,
@@ -55,7 +58,7 @@
       "stats": {
         "attack": 90,
         "defense": 40,
-        "hp": 100
+        "hp": 1000
       },
       "grade": {
         "ranking": 0,
@@ -67,6 +70,7 @@
       }
     },
     {
+      "id": 3,
       "name": "kozel",
       "height": 190,
       "weight": 63,
@@ -77,7 +81,7 @@
       "stats": {
         "attack": 50,
         "defense": 50,
-        "hp": 100
+        "hp": 1000
       },
       "grade": {
         "ranking": 0,

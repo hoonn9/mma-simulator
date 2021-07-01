@@ -14,13 +14,27 @@ interface LeagueImpl {
 export class League implements LeagueImpl {
   playerInstances: PlayerInstance[] = [];
   stage?: Stage;
+
   constructor(private matchLength: number, public weightClass: Weight) {}
 
-  start(raffleMethod: RaffleMethod) {
-    const players = [...this.playerInstances];
-    const fights = this.raffleFight(players, raffleMethod);
-    this.stage = new Stage(fights);
-    this.stage.start();
+  async start(raffleMethod: RaffleMethod) {
+    let players = [...this.playerInstances];
+
+    while (players.length > 1) {
+      const fights = this.raffleFight(players, raffleMethod);
+      const stage = new Stage(fights);
+      await stage.start();
+      const winners = stage.winners;
+
+      if (winners == null) {
+        throw new Error('critical error');
+      }
+
+      players = winners;
+    }
+
+    const champion = players[0];
+    console.log(`이번 리그의 챔피언은 ${champion.player.name}입니다!!!`);
   }
 
   createFights(players: PlayerInstance[]) {

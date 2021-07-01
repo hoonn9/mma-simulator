@@ -17,3 +17,13 @@ export type PlayerStats = {
   defense: number;
   hp: number;
 };
+
+export type Player = {
+  id: number;
+  name: string;
+  height: number;
+  weight: number;
+  style: PlayerStyle;
+  stats: PlayerStats;
+  grade: PlayerGrade;
+};

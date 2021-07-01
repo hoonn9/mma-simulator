@@ -17,7 +17,6 @@ class App {
   }
 }
 
-// fight
-// win/lose
+// 부전승, 전적남기기
 
 const app = new App();
