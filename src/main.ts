@@ -12,11 +12,8 @@ class App {
     });
 
     league.joinPlayers(playerInstances);
-
     league.start('winCount');
   }
 }
-
-// 부전승, 전적남기기
 
 const app = new App();

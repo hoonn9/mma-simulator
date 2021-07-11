@@ -5,15 +5,18 @@ const FIGHT_TERM = 0;
 
 export class Stage {
   winners?: PlayerInstance[];
+  losers?: PlayerInstance[];
   constructor(private fights: Fight[]) {}
 
   async start() {
     const winners = [];
+    const losers = [];
     for (let i = 0; i < this.fights.length; i++) {
       const fight = this.fights[i];
 
-      const { winner } = await fight.play();
+      const { winner, loser } = await fight.play();
       winners.push(winner);
+      losers.push(loser);
 
       if (i === this.fights.length - 1) {
         console.log(`모든 경기가 끝났습니다.`);
@@ -24,5 +27,6 @@ export class Stage {
     }
 
     this.winners = winners;
+    this.losers = losers;
   }
 }

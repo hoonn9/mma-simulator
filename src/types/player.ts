@@ -1,6 +1,6 @@
 export type PlayerStyle = {
   baseFight: string;
-  etc: string[];
+  etc: (string | undefined)[];
 };
 
 export type PlayerGrade = {

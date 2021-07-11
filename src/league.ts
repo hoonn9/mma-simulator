@@ -2,7 +2,6 @@ import { Fight } from './fight';
 import { PlayerInstance } from './player';
 import { Stage } from './stage';
 import { Weight } from './types/weight';
-
 type RaffleMethod = 'pov' | 'winCount' | 'loseCount';
 
 interface LeagueImpl {
@@ -14,6 +13,7 @@ interface LeagueImpl {
 export class League implements LeagueImpl {
   playerInstances: PlayerInstance[] = [];
   stage?: Stage;
+  scoreList: PlayerInstance[][] = [];
 
   constructor(private matchLength: number, public weightClass: Weight) {}
 
@@ -25,31 +25,43 @@ export class League implements LeagueImpl {
       const stage = new Stage(fights);
       await stage.start();
       const winners = stage.winners;
+      const losers = stage.losers;
 
-      if (winners == null) {
+      if (winners == null || losers == null) {
         throw new Error('critical error');
       }
+
+      this.scoreList.push(losers);
 
       players = winners;
     }
 
+    this.scoreList.push([players[0]]);
+
     const champion = players[0];
     console.log(`이번 리그의 챔피언은 ${champion.player.name}입니다!!!`);
+
+    console.log(this.scoreList);
+    this.calScore(this.scoreList);
+  }
+
+  private calScore(scoreList: PlayerInstance[][]) {
+    for (let i = 0; i < scoreList.length; i++) {
+      const players = scoreList[i];
+
+      players.forEach((player) => {
+        const score = (i + 1) * 100;
+        console.log(`${player.player.name} 이번 리그 점수`, score);
+      });
+    }
   }
 
   createFights(players: PlayerInstance[]) {
-    const isUnearnedWin = players.length % 2;
-
     const fights: Fight[] = [];
 
     for (let i = 0; i < players.length; i += 2) {
       fights.push(new Fight([players[i], players[i + 1]]));
     }
-
-    /**
-     * @TODO
-     * 플레이어 홀수 참여 시 부전승 추가
-     */
 
     return fights;
   }

@@ -1,3 +1,4 @@
+import { SKILL_LIST } from './constants/skill';
 import { PlayerInstance } from './player';
 import { Player } from './types/player';
 import { makeRandom } from './utils';
@@ -12,24 +13,11 @@ type SkillTextProps = {
 };
 
 const displaySkillText = ({ damage, defensePlayer, attackPlayer }: SkillTextProps) => {
-  const ran = makeRandom(2);
+  const skill = SKILL_LIST[makeRandom(SKILL_LIST.length - 1)];
 
-  switch (ran) {
-    case 0:
-      return console.log(
-        `${attackPlayer.name}의 강력한 스트레이트! ${defensePlayer.name}에게 들어갑니다!!! (damage: ${damage}, hp: ${defensePlayer.stats.hp})`,
-      );
-    case 1:
-      return console.log(
-        `${attackPlayer.name}의 로우킥! ${defensePlayer.name}에게 들어갑니다!!! (damage: ${damage}, hp: ${defensePlayer.stats.hp})`,
-      );
-    case 2:
-      return console.log(
-        `${attackPlayer.name}의 태클! ${defensePlayer.name}에게 들어갑니다!!! (damage: ${damage}, hp: ${defensePlayer.stats.hp})`,
-      );
-    default:
-      throw new Error(`display skill index ${ran} is not exist.`);
-  }
+  return console.log(
+    `${attackPlayer.name}의 ${skill}! ${defensePlayer.name}에게 들어갑니다!!! (damage: ${damage}, hp: ${defensePlayer.stats.hp})`,
+  );
 };
 
 export class Fight {
@@ -83,14 +71,20 @@ export class Fight {
     const winnerInstance = this.winner(red, blue);
 
     const winner = this.players.find((player) => player.player.id === winnerInstance.player.id);
+    const loser = this.players.find((player) => player.player.id !== winnerInstance.player.id);
 
-    if (!winner) {
+    if (!winner || !loser) {
       throw new Error('critical error (cannot find winner)');
     }
+
+    winner.win();
+    loser.lose();
+
     console.log(`승자는 ${winner.player.name}입니다!!!!!!!`);
 
     return {
       winner: winner,
+      loser: loser,
     };
   }
 }
